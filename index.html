@@ -1,119 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>ZENTHRACORE – Silence is Infrastructure</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            margin: 0;
-            background-color: #0f0f0f;
-            color: #eaeaea;
-            font-family: 'Segoe UI', sans-serif;
-            line-height: 1.6;
-        }
+<meta charset="UTF-8">
+<title>ZENTHRA – Silence is Infrastructure</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        header {
-            text-align: center;
-            padding: 4rem 1rem 1rem;
-        }
+<!-- Шрифт терминала -->
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
 
-        .logo {
-            max-width: 100px;
-            margin-bottom: 1rem;
-        }
+<style>
+body {
+margin: 0;
+background: linear-gradient(160deg, #0d0d0d, #1a1a1a);
+color: #eaeaea;
+font-family: 'Segoe UI', sans-serif;
+line-height: 1.6;
+}
 
-        h1 {
-            font-size: 3rem;
-            letter-spacing: 0.1rem;
-            margin-bottom: 0.5rem;
-        }
+header {
+text-align: center;
+padding: 4rem 1rem 1rem;
+}
 
-        h2 {
-            font-size: 1.2rem;
-            font-weight: normal;
-            color: #888;
-            margin-top: -0.5rem;
-        }
+h1 {
+font-size: 3.5rem;
+color: #f2f2f2;
+text-shadow: 0 0 20px rgba(0, 255, 180, 0.2);
+letter-spacing: 0.3rem;
+}
 
-        main {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
+h2 {
+font-size: 1.2rem;
+font-weight: normal;
+color: #888;
+margin-top: -0.5rem;
+}
 
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-top: 3rem;
-            margin-bottom: 1rem;
-        }
+.logo {
+max-width: 90px;
+margin-bottom: 1.2rem;
+}
 
-        .terminal {
-            background: #111;
-            color: #33ff99;
-            font-family: monospace;
-            padding: 1rem;
-            border-radius: 6px;
-            margin-top: 1rem;
-            white-space: pre-wrap;
-        }
+main {
+max-width: 800px;
+margin: 2rem auto;
+padding: 0 1rem;
+}
 
-        .highlight {
-            color: #fff;
-            font-weight: bold;
-        }
+.section-title {
+font-size: 2rem;
+font-weight: bold;
+margin: 3rem 0 1rem;
+text-align: center;
+color: #bbb;
+letter-spacing: 0.15rem;
+}
 
-        footer {
-            text-align: center;
-            color: #555;
-            margin-top: 4rem;
-            padding: 2rem;
-            font-size: 0.8rem;
-        }
+.terminal {
+background: #111;
+color: #33ff99;
+font-family: 'IBM Plex Mono', monospace;
+padding: 1rem;
+border-radius: 6px;
+margin-top: 2rem;
+white-space: pre-wrap;
+position: relative;
+}
 
-        a {
-            color: #33ff99;
-            text-decoration: none;
-        }
+.terminal::after {
+content: "_";
+animation: blink 1s step-start infinite;
+color: #33ff99;
+position: absolute;
+}
 
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+@keyframes blink {
+0%, 100% { opacity: 1; }
+50% { opacity: 0; }
+}
+
+a {
+color: #33ff99;
+text-decoration: none;
+}
+
+a:hover {
+text-decoration: underline;
+}
+
+footer {
+text-align: center;
+color: #555;
+margin-top: 4rem;
+padding: 2rem;
+font-size: 0.8rem;
+}
+</style>
 </head>
 <body>
 <header>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Om_symbol.svg/2048px-Om_symbol.svg.png" alt="Zen Logo" class="logo" />
-    <h1>ZENTHRACORE</h1>
-    <h2>hardened systems, zero-trust networking</h2>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Om_symbol.svg/2048px-Om_symbol.svg.png" alt="Zen Logo" class="logo" />
+<h1>ZENTHRA</h1>
+<h2>Hardened Systems & Zero-Trust Networking</h2>
 </header>
 
 <main>
-    <p>Welcome to my portfolio page on <strong>cloud architecture</strong> and <strong>DevSecOps</strong>.</p>
+<div class="section-title">SILENCE IS INFRASTRUCTURE</div>
 
-    <div class="section-title">SILENCE IS INFRASTRUCTURE</div>
+<p style="text-align: center;">
+I build secure, deterministic infrastructure based on hardened Gentoo hosts,<br>
+Alpine containers, and zero-trust communication principles.
+</p>
 
-    <p>I’m a Cloud Architect and DevSecOps Engineer focused on secure, deterministic and fully controlled infrastructure design. I avoid unnecessary abstraction layers and use <strong>hardened Gentoo</strong> as host systems for maximum control over kernel security, package integrity and runtime behavior.</p>
+<div class="terminal">
+zen.core ~
+$ boot sequence initialized
+$ secure VPC loaded [CIDR: 10.31.0.0/16]
+$ NLB passthrough mode active
+$ TLS termination: deferred to trusted NGINX
+$ Host system: hardened-gentoo + PaX kernel
+$ Container layer: alpine, non-root, distroless-like
+$ mTLS channel: available
+$ intrusion surface: minimized
+</div>
 
-    <p>Containers run on Alpine. TLS terminates only at the trusted layer. Load balancing via AWS NLB (TCP passthrough), mTLS-ready, with Zero Trust enforcement by design.</p>
-
-    <p class="terminal">
-        zen.core ~<br>
-        $ Starting Zenthra Core…<br>
-        System boot complete.<br>
-        $
-    </p>
-
-    <div class="section-title">Contacts</div>
-    <p>
-        GitHub: <a href="https://github.com/zenthracore" target="_blank">github.com/zenthracore</a><br>
-        Email: <a href="mailto:zenthracore@proton.me">zenthracore@proton.me</a>
-    </p>
+<div class="section-title">Contact</div>
+<p style="text-align: center;">
+GitHub: <a href="https://github.com/zenthracore" target="_blank">zenthracore</a><br>
+Email: <a href="mailto:zenthracore@proton.me">zenthracore@proton.me</a>
+</p>
 </main>
 
 <footer>
-    &copy; 2025 Zenthra — Silence is Infrastructure.
+&copy; 2025 ZENTHRA — Silence is Infrastructure.
 </footer>
 </body>
 </html>
