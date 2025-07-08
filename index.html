@@ -1,165 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <title>ZENTHRA – Silence is Infrastructure</title>
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
- <style>
- * { box-sizing: border-box; }
+  <meta charset="UTF-8">
+  <title>ZENTHRA – Silence is Infrastructure</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
 
- body {
- margin: 0;
- background: #0d0d0d;
- color: #eaeaea;
- font-family: 'Segoe UI', sans-serif;
- }
+    body {
+      margin: 0;
+      background: #0d0d0d;
+      color: #eaeaea;
+      font-family: 'Segoe UI', sans-serif;
+    }
 
- header {
- text-align: center;
- padding: 3rem 1rem 1rem;
- }
+    header {
+      text-align: center;
+      padding: 3rem 1rem 1rem;
+    }
 
- header h1 {
- font-size: 3.5rem;
- color: #f2f2f2;
- letter-spacing: 0.25rem;
- text-shadow: 0 0 20px rgba(0, 255, 180, 0.2);
- }
+    header h1 {
+      font-size: 3.5rem;
+      color: #f2f2f2;
+      letter-spacing: 0.25rem;
+      text-shadow: 0 0 20px rgba(0, 255, 180, 0.2);
+    }
 
- header p {
- font-size: 1.1rem;
- color: #888;
- margin-top: 0.5rem;
- }
+    header p {
+      font-size: 1.1rem;
+      color: #888;
+      margin-top: 0.5rem;
+    }
 
- .grid-wrapper {
- display: grid;
- grid-template-columns: 1fr 1fr;
- grid-template-rows: auto auto;
- gap: 2rem;
- padding: 4rem 5%;
- max-width: 1400px;
- margin: 0 auto;
- position: relative;
- }
+    .grid-wrapper {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      gap: 2rem;
+      padding: 4rem 5%;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
 
- .block {
- background: #141414;
- padding: 2rem;
- border-radius: 10px;
- box-shadow: 0 0 25px rgba(0, 255, 180, 0.04);
- font-size: 1rem;
- line-height: 1.6;
- min-height: 240px;
- }
+    .block {
+      background: #141414;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 25px rgba(0, 255, 180, 0.04);
+      font-size: 1rem;
+      line-height: 1.6;
+      min-height: 240px;
+    }
 
- .block h2 {
- color: #33ff99;
- margin-bottom: 1rem;
- font-size: 1.2rem;
- }
+    .block h2 {
+      color: #33ff99;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
 
- .terminal {
- position: absolute;
- top: 50%;
- left: 50%;
- transform: translate(-50%, -50%);
- background: #111;
- color: #33ff99;
- font-family: 'IBM Plex Mono', monospace;
- padding: 2.5rem;
- border-radius: 12px;
- white-space: pre-wrap;
- font-size: 1rem;
- box-shadow: 0 0 40px rgba(0, 255, 180, 0.08);
- z-index: 10;
- max-width: 600px;
- width: 80%;
- text-align: left;
- }
+    .terminal {
+      background: #111;
+      color: #33ff99;
+      font-family: 'IBM Plex Mono', monospace;
+      padding: 2.5rem;
+      border-radius: 12px;
+      white-space: pre-wrap;
+      font-size: 1rem;
+      box-shadow: 0 0 40px rgba(0, 255, 180, 0.08);
+      max-width: 100%;
+      width: 100%;
+      text-align: left;
+      margin: 0 auto;
+      grid-column: 1 / -1; /* occupies full width */
+    }
 
- .terminal::after {
- content: "_";
- animation: blink 1s step-start infinite;
- }
+    .terminal::after {
+      content: "_";
+      animation: blink 1s step-start infinite;
+    }
 
- @keyframes blink {
- 0%, 100% { opacity: 1; }
- 50% { opacity: 0; }
- }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
 
- .contact {
- text-align: center;
- margin: 5rem auto 2rem;
- font-size: 1rem;
- color: #ccc;
- }
+    .contact {
+      text-align: center;
+      margin: 5rem auto 2rem;
+      font-size: 1rem;
+      color: #ccc;
+    }
 
- .contact a {
- color: #33ff99;
- text-decoration: none;
- }
+    .contact a {
+      color: #33ff99;
+      text-decoration: none;
+    }
 
- .contact a:hover {
- text-decoration: underline;
- }
+    .contact a:hover {
+      text-decoration: underline;
+    }
 
- footer {
- text-align: center;
- font-size: 0.8rem;
- color: #555;
- margin-bottom: 2rem;
- }
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #555;
+      margin-bottom: 2rem;
+    }
 
- @media (max-width: 768px) {
- .grid-wrapper {
- grid-template-columns: 1fr;
- grid-template-rows: auto;
- padding: 2rem 1rem;
- }
-
- .terminal {
- position: static;
- transform: none;
- margin: 2rem auto;
- }
- }
- </style>
+    @media (max-width: 768px) {
+      .grid-wrapper {
+        padding: 2rem 1rem;
+      }
+      .terminal {
+        margin: 2rem auto 0 auto;
+      }
+    }
+  </style>
 </head>
 <body>
 
- <header>
- <h1>ZENTHRA</h1>
- <p>Silence is Infrastructure</p>
- </header>
+  <header>
+    <h1>ZENTHRA</h1>
+    <p>Silence is Infrastructure</p>
+  </header>
 
- <div class="grid-wrapper">
- <div class="block">
- <h2> Architecture</h2>
- <p>I design infrastructure with full control at every layer. 
- From AWS VPCs to hardened Gentoo hosts — nothing is left to chance.</p>
- </div>
+  <div class="grid-wrapper">
+    <div class="block">
+      <h2>Architecture</h2>
+      <p>I design infrastructure with full control at every layer. 
+      From AWS VPCs to hardened Gentoo hosts — nothing is left to chance.</p>
+    </div>
 
- <div class="block">
- <h2> Engineering</h2>
- <p>I prefer simplicity over complexity, stability over fashion. 
- Docker Swarm, TCP passthrough, manual SGs — systems I can trust.</p>
- </div>
+    <div class="block">
+      <h2>Engineering</h2>
+      <p>I prefer simplicity over complexity, stability over fashion. 
+      Docker Swarm, TCP passthrough, manual SGs — systems I can trust.</p>
+    </div>
 
- <div class="block">
- <h2> Philosophy</h2>
- <p>I believe in minimalism, auditability, and intentional design. 
- If you don’t understand what runs — don’t run it.</p>
- </div>
+    <div class="block">
+      <h2>Philosophy</h2>
+      <p>I believe in minimalism, auditability, and intentional design. 
+      If you don’t understand what runs — don’t run it.</p>
+    </div>
 
- <div class="block">
- <h2> My Stack</h2>
- <p>Gentoo (host), Alpine (container), NGINX, AWS NLB, Zero Trust TLS. 
- I choose only what’s necessary — and nothing more.</p>
- </div>
+    <div class="block">
+      <h2>My Stack</h2>
+      <p>Gentoo (host), Alpine (container), NGINX, AWS NLB, Zero Trust TLS. 
+      I choose only what’s necessary — and nothing more.</p>
+    </div>
 
- <div class="terminal">
+    <div class="terminal">
 zen.core ~
 $ boot sequence initialized 
 $ secure VPC loaded [CIDR: 10.31.0.0/16] 
@@ -167,17 +159,17 @@ $ TLS passthrough active
 $ Host: hardened-gentoo + PaX 
 $ Containers: alpine, non-root 
 $ intrusion surface: minimized
- </div>
- </div>
+    </div>
+  </div>
 
- <div class="contact">
- <p>GitHub: <a href="https://github.com/zenthracore" target="_blank">zenthracore</a> 
- <br>Email: <a href="mailto:your@email.com">your@email.com</a></p>
- </div>
+  <div class="contact">
+    <p>GitHub: <a href="https://github.com/zenthracore" target="_blank">zenthracore</a> 
+    <br>Email: <a href="mailto:your@email.com">your@email.com</a></p>
+  </div>
 
- <footer>
- &copy; 2025 ZENTHRA — Designed for auditability and silence.
- </footer>
+  <footer>
+    &copy; 2025 ZENTHRA — Designed for auditability and silence.
+  </footer>
 
 </body>
 </html>
