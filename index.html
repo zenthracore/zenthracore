@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
  <meta charset="UTF-8">
- <title>ZENTHRA — Silence is Infrastructure</title>
+ <title>ZENTHRA – Silence is Infrastructure</title>
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
  <style>
@@ -13,37 +13,51 @@
  background: #0d0d0d;
  color: #eaeaea;
  font-family: 'Segoe UI', sans-serif;
- min-height: 100vh;
- display: flex;
- justify-content: center;
- align-items: center;
+ }
+
+ header {
+ text-align: center;
+ padding: 3rem 1rem 1rem;
+ }
+
+ header h1 {
+ font-size: 3.5rem;
+ color: #f2f2f2;
+ letter-spacing: 0.25rem;
+ text-shadow: 0 0 20px rgba(0, 255, 180, 0.2);
+ }
+
+ header p {
+ font-size: 1.1rem;
+ color: #888;
+ margin-top: 0.5rem;
  }
 
  .grid-wrapper {
- position: relative;
- width: 90vw;
- max-width: 1200px;
- height: 90vh;
  display: grid;
  grid-template-columns: 1fr 1fr;
- grid-template-rows: 1fr 1fr;
+ grid-template-rows: auto auto;
  gap: 2rem;
- padding: 2rem;
+ padding: 4rem 5%;
+ max-width: 1400px;
+ margin: 0 auto;
+ position: relative;
  }
 
  .block {
  background: #141414;
- padding: 1.5rem;
+ padding: 2rem;
  border-radius: 10px;
- box-shadow: 0 0 30px rgba(0, 255, 180, 0.05);
- font-size: 0.95rem;
+ box-shadow: 0 0 25px rgba(0, 255, 180, 0.04);
+ font-size: 1rem;
  line-height: 1.6;
+ min-height: 240px;
  }
 
  .block h2 {
  color: #33ff99;
- margin-bottom: 0.8rem;
- font-size: 1.1rem;
+ margin-bottom: 1rem;
+ font-size: 1.2rem;
  }
 
  .terminal {
@@ -54,14 +68,14 @@
  background: #111;
  color: #33ff99;
  font-family: 'IBM Plex Mono', monospace;
- padding: 2rem;
- border-radius: 10px;
+ padding: 2.5rem;
+ border-radius: 12px;
  white-space: pre-wrap;
- font-size: 0.95rem;
- box-shadow: 0 0 40px rgba(0, 255, 180, 0.1);
- min-width: 300px;
- max-width: 80%;
+ font-size: 1rem;
+ box-shadow: 0 0 40px rgba(0, 255, 180, 0.08);
  z-index: 10;
+ max-width: 600px;
+ width: 80%;
  text-align: left;
  }
 
@@ -75,33 +89,50 @@
  50% { opacity: 0; }
  }
 
- footer {
- position: absolute;
- bottom: 1rem;
- width: 100%;
+ .contact {
  text-align: center;
- color: #555;
+ margin: 5rem auto 2rem;
+ font-size: 1rem;
+ color: #ccc;
+ }
+
+ .contact a {
+ color: #33ff99;
+ text-decoration: none;
+ }
+
+ .contact a:hover {
+ text-decoration: underline;
+ }
+
+ footer {
+ text-align: center;
  font-size: 0.8rem;
+ color: #555;
+ margin-bottom: 2rem;
  }
 
  @media (max-width: 768px) {
  .grid-wrapper {
- display: flex;
- flex-direction: column;
- height: auto;
- padding: 1rem;
- gap: 1rem;
+ grid-template-columns: 1fr;
+ grid-template-rows: auto;
+ padding: 2rem 1rem;
  }
 
  .terminal {
  position: static;
  transform: none;
- margin-bottom: 1rem;
+ margin: 2rem auto;
  }
  }
  </style>
 </head>
 <body>
+
+ <header>
+ <h1>ZENTHRA</h1>
+ <p>Silence is Infrastructure</p>
+ </header>
 
  <div class="grid-wrapper">
  <div class="block">
@@ -130,17 +161,22 @@
 
  <div class="terminal">
 zen.core ~
-$ boot sequence initialized
-$ secure VPC loaded [CIDR: 10.31.0.0/16]
-$ TLS passthrough active
-$ Host: hardened-gentoo + PaX
-$ Containers: alpine, non-root
+$ boot sequence initialized 
+$ secure VPC loaded [CIDR: 10.31.0.0/16] 
+$ TLS passthrough active 
+$ Host: hardened-gentoo + PaX 
+$ Containers: alpine, non-root 
 $ intrusion surface: minimized
  </div>
  </div>
 
+ <div class="contact">
+ <p>GitHub: <a href="https://github.com/zenthracore" target="_blank">zenthracore</a> 
+ <br>Email: <a href="mailto:zenthracore@proton.me">your@email.com</a></p>
+ </div>
+
  <footer>
- &copy; 2025 ZENTHRA — Silence is Infrastructure
+ &copy; 2025 ZENTHRA — Designed for auditability and silence.
  </footer>
 
 </body>
