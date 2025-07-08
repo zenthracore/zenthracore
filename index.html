@@ -6,245 +6,300 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
+    html, body {
+      margin: 0; padding: 0; height: 100%; width: 100%;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
       background: #0d0d0d;
-      color: #ececec;
-      font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
-      min-height: 100vh;
+      color: #f5f5f5;
+      overflow-x: hidden;
     }
-    .main-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      gap: 0;
-      min-height: 80vh;
-      max-width: 1200px;
-      margin: 4vw auto 0 auto;
-      box-shadow: 0 0 64px 0 rgba(0,255,180,0.04);
-      border-radius: 24px;
-      overflow: hidden;
-    }
-    .grid-img {
-      background: #111 url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80') center/cover no-repeat;
+    body { font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif; }
+
+    section {
+      height: 100vh;
+      width: 100vw;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
+      overflow: hidden;
+      transition: background 0.6s cubic-bezier(.77,0,.18,1);
     }
-    .grid-img::after {
-      content: '';
-      display: block;
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 40%,rgba(0,0,0,0.55) 55%,rgba(0,0,0,0.85) 100%);
-      z-index: 1;
-    }
-    .grid-img-inner {
-      z-index: 2;
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.06);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 50px 0 rgba(0,255,180,0.06);
-      margin: 0 auto;
-    }
-    .grid-img-inner svg {
-      width: 80px;
-      height: 80px;
-      display: block;
-      opacity: 0.8;
-    }
-
-    .grid-logo {
-      background: #181d1c;
-      display: flex;
+    .logo-section {
+      background: #111;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      gap: 1.5rem;
-      padding: 2.5rem 1rem 2rem 1rem;
     }
     .zenthra-logo {
-      width: 110px;
-      height: 110px;
-      margin: 0 auto 1rem auto;
-      opacity: 0.92;
+      width: 180px;
+      height: 180px;
+      margin-bottom: 2rem;
       display: block;
     }
-    .zenthra-title {
-      font-size: 2.6rem;
-      letter-spacing: 0.2em;
+    .logo-title {
+      font-size: 3.2rem;
       font-weight: 700;
-      color: #e8fff3;
+      letter-spacing: 0.17em;
       margin: 0;
+      color: #e5fff7;
+      text-shadow: 0 0 24px rgba(0,255,180,0.11);
+      text-align: center;
     }
-    .zenthra-desc {
-      font-size: 1.1rem;
-      color: #57dcb1;
-      margin-top: 0;
-      margin-bottom: 0.2em;
-      letter-spacing: 0.12em;
+    .logo-slogan {
+      font-size: 1.5rem;
+      color: #33ff99;
       font-family: 'IBM Plex Mono', monospace;
-      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-align: center;
+      margin-top: 1.5rem;
     }
 
-    .grid-manifesto {
-      background: #1a1d20;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 2.8rem 2.2rem 2.2rem 2.2rem;
-      letter-spacing: 0.04em;
+    /* Монах секция */
+    .monk-section {
+      background: #111 url('be71ac85-f044-485f-a7c5-4eb3dc3534e9.png') center/cover no-repeat;
+      transition: background 0.9s cubic-bezier(.86,0,.21,1);
     }
-    .manifesto-title {
-      font-size: 2.2rem;
-      color: #d9f0e4;
+    .monk-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(18,24,20,0.55);
+      z-index: 1;
+    }
+    .monk-content {
+      position: relative;
+      z-index: 2;
+      color: #e8fff4;
+      text-align: left;
+      max-width: 650px;
+      padding: 3rem;
+      background: rgba(20,34,28,0.72);
+      border-radius: 22px;
+      box-shadow: 0 0 64px rgba(0,255,180,0.14);
+      opacity: 0;
+      transform: translateY(60px);
+      transition: opacity 0.9s, transform 0.8s cubic-bezier(.69,0,.18,1);
+    }
+    .monk-content.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .monk-title {
+      font-size: 2.1rem;
+      color: #31e0a3;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.08em;
+      font-family: 'Montserrat', sans-serif;
       font-weight: 700;
-      margin: 0 0 1rem 0;
-      line-height: 1.06;
-      letter-spacing: 0.04em;
     }
-    .manifesto-title span {
-      color: #33ff99;
-      display: block;
+    .monk-list {
+      font-size: 1.16rem;
+      color: #eafbee;
+      margin: 0 0 0.2em 0;
       font-family: 'IBM Plex Mono', monospace;
     }
-    .manifesto-text {
-      font-size: 1.06rem;
-      color: #c1c5c3;
-      margin-bottom: 0;
-      margin-top: 1rem;
-      font-weight: 400;
-    }
-    .manifesto-signature {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 1rem;
-      margin-top: 1.6em;
-      color: #85ffe2;
-      opacity: 0.66;
+    .monk-list li {
+      margin-bottom: 0.7em;
+      line-height: 1.6;
     }
 
-    .grid-terminal {
-      background: #141c17;
-      padding: 2.5rem 2.1rem 2rem 2.1rem;
-      font-family: 'IBM Plex Mono', monospace;
-      display: flex;
+    /* Секция про себя */
+    .about-section {
+      background: #101516;
       flex-direction: column;
-      justify-content: center;
-      min-height: 320px;
-    }
-    .terminal-inner {
-      background: #101917;
-      border-radius: 14px;
-      padding: 2.3rem 1.5rem 1.7rem 1.5rem;
-      font-size: 1.1rem;
-      color: #33ff99;
-      box-shadow: 0 0 18px rgba(0,255,180,0.11);
-      min-height: 140px;
-      max-width: 420px;
-      margin: 0 auto;
-      white-space: pre-line;
-      line-height: 1.7;
+      align-items: flex-start;
+      justify-content: flex-end;
+      padding: 0 0 8vh 0;
       position: relative;
     }
-    .terminal-prompt {
-      color: #b5fff0;
-      font-weight: 700;
-      letter-spacing: 0.06em;
+    .about-content {
+      max-width: 700px;
+      margin-left: 8vw;
+      background: rgba(18,24,20,0.88);
+      border-radius: 18px;
+      box-shadow: 0 0 64px rgba(0,255,180,0.10);
+      padding: 3.2rem 2.2rem 2.6rem 2.6rem;
+      opacity: 0;
+      transform: translateX(90px);
+      transition: opacity 1.0s, transform 0.8s cubic-bezier(.72,0,.19,1);
     }
-    .terminal-blink {
+    .about-content.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .about-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: #f2fff8;
+      margin-bottom: 1.1rem;
+    }
+    .about-title span {
+      color: #33ff99;
       display: inline-block;
-      width: 0.6em;
-      animation: blink 1.1s step-end infinite;
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 700;
+      letter-spacing: 0.12em;
     }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
+    .about-text {
+      font-size: 1.16rem;
+      color: #d6f6ea;
+      line-height: 1.7;
+      margin-bottom: 0.6em;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    .about-sign {
+      color: #99ffe2;
+      margin-top: 2em;
+      opacity: 0.6;
+      font-size: 1.03rem;
+      font-family: 'IBM Plex Mono', monospace;
     }
 
+    /* Терминальная секция */
+    .terminal-section {
+      background: #131c18;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .terminal-box {
+      background: #111816;
+      border-radius: 14px;
+      box-shadow: 0 0 32px rgba(0,255,180,0.09);
+      padding: 2.8rem 2.5rem 2.2rem 2.2rem;
+      min-width: 340px;
+      max-width: 550px;
+      margin: 0 auto;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1.09rem;
+      color: #33ff99;
+      line-height: 1.8;
+      letter-spacing: 0.03em;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: opacity 1.2s, transform 0.8s cubic-bezier(.72,0,.19,1);
+    }
+    .terminal-box.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .terminal-prompt { color: #84f2cd; font-weight: 700;}
+    .terminal-blink { display:inline-block; width:0.6em; animation: blink 1.1s step-end infinite;}
+    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0;} }
+
+    /* Контакты и футер */
+    .contacts {
+      text-align:center;
+      margin:3rem auto 1.7rem auto;
+      color:#8affe7;
+      font-family:'IBM Plex Mono',monospace;
+      font-size:1.07rem;
+    }
+    .contacts a { color:#33ff99;text-decoration:none; }
+    .contacts a:hover { text-decoration: underline; }
+    footer {
+      text-align:center;color:#555;font-size:0.94rem;letter-spacing:0.08em;margin-bottom:1.7rem;
+    }
     @media (max-width: 900px) {
-      .main-grid { grid-template-columns: 1fr; grid-template-rows: repeat(4, 1fr); margin: 0; border-radius: 0; }
-      .grid-img, .grid-logo, .grid-manifesto, .grid-terminal { min-height: 250px; }
-      .zenthra-logo { width: 85px; height: 85px;}
-      .zenthra-title { font-size: 2.2rem;}
-      .manifesto-title { font-size: 1.5rem; }
+      .zenthra-logo { width:110px; height:110px;}
+      .logo-title { font-size:2rem;}
+      .logo-slogan { font-size:1rem;}
+      .monk-content, .about-content, .terminal-box { padding: 1.3rem 1rem 1.2rem 1.2rem; font-size: 1rem;}
+      .about-title, .monk-title { font-size:1.2rem;}
     }
   </style>
 </head>
 <body>
 
-<div class="main-grid">
-  <!-- Левая верхняя: ФОТО или графика -->
-  <div class="grid-img">
-    <div class="grid-img-inner">
-      <!-- Можно вставить SVG лого монаха, либо оставить пустым для круга -->
-      <!-- пример: -->
-      <svg width="90" height="90" viewBox="0 0 90 90" fill="none">
-        <circle cx="45" cy="45" r="43" stroke="#3afac7" stroke-width="4"/>
-        <ellipse cx="45" cy="61" rx="18" ry="7" fill="#3afac7" />
-        <circle cx="45" cy="42" r="13" fill="#3afac7"/>
-        <rect x="39" y="49" width="12" height="10" rx="5" fill="#3afac7"/>
-      </svg>
-    </div>
-  </div>
+<section class="logo-section" id="logo">
+  <img class="zenthra-logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA..." alt="Zenthra Logo">
+  <!-- вставь сюда свою картинку лого, можно и svg, либо src="logo.png" -->
+  <div class="logo-title">ZENTHRA</div>
+  <div class="logo-slogan">Silence is Infrastructure</div>
+</section>
 
-  <!-- Правая верхняя: ЛОГО + имя -->
-  <div class="grid-logo">
-    <svg class="zenthra-logo" viewBox="0 0 256 256" fill="none">
-      <circle cx="128" cy="128" r="120" stroke="#33ff99" stroke-width="16"/>
-      <ellipse cx="128" cy="186" rx="60" ry="22" fill="#33ff99"/>
-      <circle cx="128" cy="112" r="44" fill="#33ff99"/>
-      <rect x="106" y="144" width="44" height="32" rx="16" fill="#33ff99"/>
-    </svg>
-    <h1 class="zenthra-title">ZENTHRA</h1>
-    <p class="zenthra-desc">Silence is Infrastructure</p>
+<section class="monk-section" id="zero-trust">
+  <div class="monk-overlay"></div>
+  <div class="monk-content" id="monkText">
+    <div class="monk-title">ZERO TRUST PRINCIPLES</div>
+    <ul class="monk-list">
+      <li>— Every connection is untrusted by default, even inside the perimeter.</li>
+      <li>— TLS is not optional; passthrough to NGINX only.</li>
+      <li>— No unmanaged resources, no auto-provisioned access.</li>
+      <li>— VPC, subnets, routes — all created and audited manually.</li>
+      <li>— Every secret is rotated, every action is logged.</li>
+      <li>— Auditability above automation. If you don’t control it — you don’t deploy it.</li>
+    </ul>
   </div>
+</section>
 
-  <!-- Левая нижняя: манифест/текст -->
-  <div class="grid-manifesto">
-    <div class="manifesto-title">
-      SILENCE IS<br>
-      <span>INFRASTRUCTURE</span>
+<section class="about-section" id="about">
+  <div class="about-content" id="aboutText">
+    <div class="about-title">
+      <span>SILENCE IS INFRASTRUCTURE</span>
     </div>
-    <div class="manifesto-text">
-      I am a creator of resilient, minimal, and auditable architectures.<br>
-      My work means full control at every layer: custom AWS VPCs, manual route management, zero default resources.<br>
-      From hardened Gentoo hosts to non-root Alpine containers — every byte, every packet is under scrutiny.<br>
+    <div class="about-text">
+      I am the architect behind Zenthra Core —<br>
+      Building cloud-native platforms that stand on explicit control, transparency, and minimum viable complexity.<br><br>
+      My path: <b>Gentoo</b> for the host, <b>Alpine</b> in containers, <b>NGINX</b> for edge, AWS NLB in TCP passthrough. Zero Trust is not a policy, it’s an axiom.<br>
+      Every layer is hardened, every traffic flow is intentional, every dependency is chosen for a reason.<br>
       <br>
-      I believe in: simplicity over fashion, explicitness over automation, and Zero Trust as a mindset, not a checkbox.<br>
-      No black boxes. No magic. If you can't audit it — it doesn't belong in production.
+      No chance. No luck. Only architecture.
     </div>
-    <div class="manifesto-signature">
-      — Architect, ZENTHRA Core
-    </div>
-  </div>
-
-  <!-- Правая нижняя: терминал -->
-  <div class="grid-terminal">
-    <div class="terminal-inner">
-      <span class="terminal-prompt">zen.core ~ $</span> Starting Zenthra Core…<br>
-      <span class="terminal-prompt">$</span> System boot complete.<br>
-      <span class="terminal-prompt">$</span> <span class="terminal-blink">_</span>
+    <div class="about-sign">
+      — Maksym, Creator of Zenthra
     </div>
   </div>
-</div>
+</section>
 
-<!-- Контакты -->
-<div style="text-align:center; margin:3rem auto 1.7rem auto; color:#8affe7; font-family:'IBM Plex Mono',monospace; font-size:1.1rem;">
-  <span>GitHub: <a href="https://github.com/zenthracore" style="color:#33ff99;text-decoration:none;" target="_blank">zenthracore</a></span>
+<section class="terminal-section" id="terminal">
+  <div class="terminal-box" id="terminalBox">
+<span class="terminal-prompt">zen.core ~ $</span> boot sequence initialized
+<span class="terminal-prompt">$</span> secure VPC loaded [CIDR: 10.31.0.0/16]
+<span class="terminal-prompt">$</span> manual routing: active
+<span class="terminal-prompt">$</span> TLS passthrough: enforced
+<span class="terminal-prompt">$</span> Host: hardened-gentoo + PaX
+<span class="terminal-prompt">$</span> Containers: alpine, non-root
+<span class="terminal-prompt">$</span> NGINX edge, all traffic: 443/tcp
+<span class="terminal-prompt">$</span> Zero Trust boundaries: deployed
+<span class="terminal-prompt">$</span> Secrets: docker swarm, rotated, encrypted at rest
+<span class="terminal-prompt">$</span> Intrusion surface: minimized
+<span class="terminal-prompt">$</span> System status: AUDITABLE
+<span class="terminal-prompt">$</span> <span class="terminal-blink">_</span>
+  </div>
+</section>
+
+<div class="contacts">
+  GitHub: <a href="https://github.com/zenthracore" target="_blank">zenthracore</a>
   &nbsp;|&nbsp;
-  <span>Email: <a href="mailto:your@email.com" style="color:#33ff99;text-decoration:none;">your@email.com</a></span>
+  Email: <a href="mailto:your@email.com">your@email.com</a>
 </div>
-
-<footer style="text-align:center;color:#555;font-size:0.9rem;letter-spacing:0.08em;margin-bottom:1.7rem;">
+<footer>
   &copy; 2025 ZENTHRA — Designed for auditability and silence.
 </footer>
 
+<script>
+  // Анимация появления блоков при скролле
+  function showOnScroll(el) {
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
+    if (rect.top <= windowHeight*0.65) {
+      el.classList.add('visible');
+    }
+  }
+  window.addEventListener('scroll', () => {
+    showOnScroll(document.getElementById('monkText'));
+    showOnScroll(document.getElementById('aboutText'));
+    showOnScroll(document.getElementById('terminalBox'));
+  });
+  // при загрузке
+  document.addEventListener('DOMContentLoaded', () => {
+    showOnScroll(document.getElementById('monkText'));
+    showOnScroll(document.getElementById('aboutText'));
+    showOnScroll(document.getElementById('terminalBox'));
+  });
+</script>
 </body>
 </html>
