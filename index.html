@@ -35,11 +35,11 @@
 
     .grid-wrapper {
       display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: auto;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto auto;
       gap: 2rem;
       padding: 4rem 5%;
-      max-width: 900px;
+      max-width: 1400px;
       margin: 0 auto;
       position: relative;
     }
@@ -47,11 +47,11 @@
     .block {
       background: #141414;
       padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 0 25px rgba(0, 255, 180, 0.04);
+      border-radius: 16px;
+      box-shadow: 0 0 25px rgba(0, 255, 180, 0.07);
       font-size: 1rem;
       line-height: 1.6;
-      min-height: 240px;
+      min-height: 210px;
     }
 
     .block h2 {
@@ -60,27 +60,39 @@
       font-size: 1.2rem;
     }
 
+    /* Блоки размещаем 1,2,3,4 как на скрине */
+    .block:nth-child(1) { grid-column: 1; grid-row: 1; }
+    .block:nth-child(2) { grid-column: 2; grid-row: 1; }
+    .block:nth-child(3) { grid-column: 1; grid-row: 3; }
+    .block:nth-child(4) { grid-column: 2; grid-row: 3; }
+
+    /* Терминал в центре */
     .terminal {
+      grid-column: 1 / span 2;
+      grid-row: 2;
       background: #111;
       color: #33ff99;
       font-family: 'IBM Plex Mono', monospace;
       padding: 2.5rem;
-      border-radius: 12px;
+      border-radius: 16px;
       white-space: pre-wrap;
       font-size: 1rem;
-      box-shadow: 0 0 40px rgba(0, 255, 180, 0.08);
-      max-width: 100%;
+      box-shadow: 0 0 40px rgba(0, 255, 180, 0.10);
+      max-width: 600px;
       width: 100%;
-      text-align: left;
       margin: 0 auto;
-      grid-column: 1 / -1; /* occupies full width */
+      text-align: left;
+      position: relative;
+      z-index: 1;
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: left;
     }
-
     .terminal::after {
       content: "_";
       animation: blink 1s step-start infinite;
     }
-
     @keyframes blink {
       0%, 100% { opacity: 1; }
       50% { opacity: 0; }
@@ -92,12 +104,10 @@
       font-size: 1rem;
       color: #ccc;
     }
-
     .contact a {
       color: #33ff99;
       text-decoration: none;
     }
-
     .contact a:hover {
       text-decoration: underline;
     }
@@ -109,18 +119,25 @@
       margin-bottom: 2rem;
     }
 
-    @media (max-width: 768px) {
+    /* Адаптив для мобильных */
+    @media (max-width: 900px) {
       .grid-wrapper {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
         padding: 2rem 1rem;
       }
+      .block, .terminal {
+        grid-column: 1 !important;
+        max-width: 100%;
+      }
       .terminal {
-        margin: 2rem auto 0 auto;
+        margin: 0 auto 2rem auto;
+        min-height: 150px;
       }
     }
   </style>
 </head>
 <body>
-
   <header>
     <h1>ZENTHRA</h1>
     <p>Silence is Infrastructure</p>
@@ -129,26 +146,11 @@
   <div class="grid-wrapper">
     <div class="block">
       <h2>Architecture</h2>
-      <p>I design infrastructure with full control at every layer. 
-      From AWS VPCs to hardened Gentoo hosts — nothing is left to chance.</p>
+      <p>I design infrastructure with full control at every layer. From AWS VPCs to hardened Gentoo hosts — nothing is left to chance.</p>
     </div>
-
     <div class="block">
       <h2>Engineering</h2>
-      <p>I prefer simplicity over complexity, stability over fashion. 
-      Docker Swarm, TCP passthrough, manual SGs — systems I can trust.</p>
-    </div>
-
-    <div class="block">
-      <h2>Philosophy</h2>
-      <p>I believe in minimalism, auditability, and intentional design. 
-      If you don’t understand what runs — don’t run it.</p>
-    </div>
-
-    <div class="block">
-      <h2>My Stack</h2>
-      <p>Gentoo (host), Alpine (container), NGINX, AWS NLB, Zero Trust TLS. 
-      I choose only what’s necessary — and nothing more.</p>
+      <p>I prefer simplicity over complexity, stability over fashion. Docker Swarm, TCP passthrough, manual SGs — systems I can trust.</p>
     </div>
 
     <div class="terminal">
@@ -160,16 +162,23 @@ $ Host: hardened-gentoo + PaX
 $ Containers: alpine, non-root 
 $ intrusion surface: minimized
     </div>
+
+    <div class="block">
+      <h2>Philosophy</h2>
+      <p>I believe in minimalism, auditability, and intentional design. If you don’t understand what runs — don’t run it.</p>
+    </div>
+    <div class="block">
+      <h2>My Stack</h2>
+      <p>Gentoo (host), Alpine (container), NGINX, AWS NLB, Zero Trust TLS. I choose only what’s necessary — and nothing more.</p>
+    </div>
   </div>
 
   <div class="contact">
-    <p>GitHub: <a href="https://github.com/zenthracore" target="_blank">zenthracore</a> 
+    <p>GitHub: <a href="https://github.com/zenthracore" target="_blank">zenthracore</a>
     <br>Email: <a href="mailto:your@email.com">your@email.com</a></p>
   </div>
-
   <footer>
     &copy; 2025 ZENTHRA — Designed for auditability and silence.
   </footer>
-
 </body>
 </html>
