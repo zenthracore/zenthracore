@@ -1,138 +1,169 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>ZENTHRA – Silence is Infrastructure</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta charset="UTF-8">
+ <title>ZENTHRA – Silence is Infrastructure</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Шрифт терминала -->
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+ <!-- Fonts -->
+ <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
 
-<style>
-body {
-margin: 0;
-background: linear-gradient(160deg, #0d0d0d, #1a1a1a);
-color: #eaeaea;
-font-family: 'Segoe UI', sans-serif;
-line-height: 1.6;
-}
+ <style>
+ * {
+ box-sizing: border-box;
+ }
 
-header {
-text-align: center;
-padding: 4rem 1rem 1rem;
-}
+ body {
+ margin: 0;
+ background: linear-gradient(160deg, #0d0d0d, #1a1a1a);
+ color: #eaeaea;
+ font-family: 'Segoe UI', sans-serif;
+ }
 
-h1 {
-font-size: 3.5rem;
-color: #f2f2f2;
-text-shadow: 0 0 20px rgba(0, 255, 180, 0.2);
-letter-spacing: 0.3rem;
-}
+ .grid {
+ display: grid;
+ grid-template-areas:
+ "block1 terminal block2"
+ "block3 terminal block4";
+ grid-template-columns: 1fr 1.5fr 1fr;
+ grid-template-rows: auto auto;
+ gap: 2rem;
+ padding: 3rem;
+ min-height: 100vh;
+ }
 
-h2 {
-font-size: 1.2rem;
-font-weight: normal;
-color: #888;
-margin-top: -0.5rem;
-}
+ .block {
+ background: #141414;
+ padding: 1.5rem;
+ border-radius: 8px;
+ box-shadow: 0 0 20px rgba(0, 255, 180, 0.05);
+ font-size: 0.95rem;
+ line-height: 1.6;
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ }
 
-.logo {
-max-width: 90px;
-margin-bottom: 1.2rem;
-}
+ .block h2 {
+ font-size: 1.2rem;
+ color: #33ff99;
+ margin-bottom: 0.8rem;
+ }
 
-main {
-max-width: 800px;
-margin: 2rem auto;
-padding: 0 1rem;
-}
+ .terminal {
+ background: #111;
+ color: #33ff99;
+ font-family: 'IBM Plex Mono', monospace;
+ padding: 2rem;
+ border-radius: 10px;
+ white-space: pre-wrap;
+ position: relative;
+ font-size: 0.95rem;
+ text-align: left;
+ box-shadow: 0 0 25px rgba(0, 255, 180, 0.08);
+ height: 100%;
+ }
 
-.section-title {
-font-size: 2rem;
-font-weight: bold;
-margin: 3rem 0 1rem;
-text-align: center;
-color: #bbb;
-letter-spacing: 0.15rem;
-}
+ .terminal::after {
+ content: "_";
+ animation: blink 1s step-start infinite;
+ position: absolute;
+ }
 
-.terminal {
-background: #111;
-color: #33ff99;
-font-family: 'IBM Plex Mono', monospace;
-padding: 1rem;
-border-radius: 6px;
-margin-top: 2rem;
-white-space: pre-wrap;
-position: relative;
-}
+ @keyframes blink {
+ 0%, 100% { opacity: 1; }
+ 50% { opacity: 0; }
+ }
 
-.terminal::after {
-content: "_";
-animation: blink 1s step-start infinite;
-color: #33ff99;
-position: absolute;
-}
+ .title {
+ text-align: center;
+ font-size: 3rem;
+ letter-spacing: 0.2rem;
+ margin-top: 2rem;
+ color: #f2f2f2;
+ text-shadow: 0 0 15px rgba(0, 255, 180, 0.2);
+ }
 
-@keyframes blink {
-0%, 100% { opacity: 1; }
-50% { opacity: 0; }
-}
+ .subtitle {
+ text-align: center;
+ font-size: 1rem;
+ color: #888;
+ margin-bottom: 2rem;
+ }
 
-a {
-color: #33ff99;
-text-decoration: none;
-}
+ footer {
+ text-align: center;
+ color: #555;
+ margin: 3rem 0 1rem;
+ font-size: 0.8rem;
+ }
 
-a:hover {
-text-decoration: underline;
-}
+ /* Grid placement */
+ .block1 { grid-area: block1; }
+ .block2 { grid-area: block2; }
+ .block3 { grid-area: block3; }
+ .block4 { grid-area: block4; }
+ .terminal-block { grid-area: terminal; }
 
-footer {
-text-align: center;
-color: #555;
-margin-top: 4rem;
-padding: 2rem;
-font-size: 0.8rem;
-}
-</style>
+ @media (max-width: 980px) {
+ .grid {
+ display: flex;
+ flex-direction: column;
+ padding: 2rem;
+ }
+
+ .block, .terminal {
+ margin-bottom: 2rem;
+ }
+ }
+ </style>
 </head>
 <body>
-<header>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Om_symbol.svg/2048px-Om_symbol.svg.png" alt="Zen Logo" class="logo" />
-<h1>ZENTHRA</h1>
-<h2>Hardened Systems & Zero-Trust Networking</h2>
-</header>
 
-<main>
-<div class="section-title">SILENCE IS INFRASTRUCTURE</div>
+ <div class="title">ZENTHRA</div>
+ <div class="subtitle">Silence is Infrastructure</div>
 
-<p style="text-align: center;">
-I build secure, deterministic infrastructure based on hardened Gentoo hosts,<br>
-Alpine containers, and zero-trust communication principles.
-</p>
+ <div class="grid">
 
-<div class="terminal">
+ <div class="block block1">
+ <h2> Architecture</h2>
+ <p>I design infrastructure with full control at every layer. 
+ From manually provisioned AWS VPCs to hardened Linux hosts — nothing is left to chance.</p>
+ </div>
+
+ <div class="block block2">
+ <h2> Engineering</h2>
+ <p>I prefer simplicity over complexity, stability over fashion. 
+ Docker Swarm, TCP passthrough, manual security groups — I build systems that I can trust.</p>
+ </div>
+
+ <div class="terminal terminal-block">
 zen.core ~
 $ boot sequence initialized
 $ secure VPC loaded [CIDR: 10.31.0.0/16]
 $ NLB passthrough mode active
 $ TLS termination: deferred to trusted NGINX
-$ Host system: hardened-gentoo + PaX kernel
-$ Container layer: alpine, non-root, distroless-like
-$ mTLS channel: available
+$ Host: hardened-gentoo + PaX
+$ Containers: alpine, non-root
+$ mTLS channel: ready
 $ intrusion surface: minimized
-</div>
+ </div>
 
-<div class="section-title">Contact</div>
-<p style="text-align: center;">
-GitHub: <a href="https://github.com/zenthracore" target="_blank">zenthracore</a><br>
-Email: <a href="mailto:zenthracore@proton.me">zenthracore@proton.me</a>
-</p>
-</main>
+ <div class="block block3">
+ <h2> Philosophy</h2>
+ <p>I believe in minimalism, auditability and intentional design. 
+ If you don’t understand what runs — don’t run it.</p>
+ </div>
 
-<footer>
-&copy; 2025 ZENTHRA — Silence is Infrastructure.
-</footer>
+ <div class="block block4">
+ <h2> My Stack</h2>
+ <p>Gentoo (host), Alpine (container), NGINX, AWS NLB, Zero Trust TLS. 
+ I choose only what’s necessary, and nothing more.</p>
+ </div>
+ </div>
+
+ <footer>
+ &copy; 2025 ZENTHRA — Built with hardened layers and a quiet mind.
+ </footer>
 </body>
 </html>
